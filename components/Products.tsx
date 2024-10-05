@@ -33,7 +33,7 @@ export default function Products({ title, products, className }: ProductScroller
     
     if (section && productElements.length > 0) {
       const totalWidth = productElements.reduce((width, product) => width + product.offsetWidth, 0);
-      const extraScroll = section.offsetWidth * 0.25;
+      const extraScroll = section.offsetWidth * 0.29;
 
       gsap.to(productElements, {
         x: () => -(totalWidth - section.offsetWidth + extraScroll),
