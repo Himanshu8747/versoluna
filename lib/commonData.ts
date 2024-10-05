@@ -28,3 +28,24 @@ export const featuredProducts: Product[] = [
     { id: 17, name: 'Noise Mic', price: 4999.99, description: 'Crystal clear audio for all your calls and recordings.' },
     { id: 18, name: 'Smart Scale', price: 1499.99, description: 'Track your fitness progress with detailed metrics.' },
   ];
+
+
+  export const categories = [
+    { name: "Women's Wear", image: "/placeholder.svg?height=300&width=400", slug: "womens-wear" },
+    { name: "Men's Wear", image: "/placeholder.svg?height=300&width=400", slug: "mens-wear" },
+    { name: "Accessories", image: "/placeholder.svg?height=300&width=400", slug: "accessories" },
+    { name: "Footwear", image: "/placeholder.svg?height=300&width=400", slug: "footwear" },
+    { name: "Activewear", image: "/placeholder.svg?height=300&width=400", slug: "activewear" },
+    { name: "Formal Wear", image: "/placeholder.svg?height=300&width=400", slug: "formal-wear" },
+  ]
+  
+  export const brands = [
+    { name: "Gucci", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Prada", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Louis Vuitton", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Chanel", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Hermès", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Balenciaga", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Dior", logo: "/placeholder.svg?height=100&width=100" },
+    { name: "Versace", logo: "/placeholder.svg?height=100&width=100" },
+  ]
