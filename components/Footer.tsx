@@ -1,16 +1,10 @@
 import Link from 'next/link'
-
+import { Facebook, Instagram, Twitter, Linkedin} from 'lucide-react';
 export default function Footer() {
   return (
     <footer className="border-t">
       <div className="container mx-auto px-4 py-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
-          <div>
-            <h3 className="font-semibold mb-4">About Us</h3>
-            <p className="text-sm text-gray-600">
-              Versoluna is your one-stop shop for all things stylish and modern.
-            </p>
-          </div>
           <div>
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
@@ -28,6 +22,15 @@ export default function Footer() {
               Email: info@versoluna.com<br />
               Phone: (123) 456-7890
             </p>
+          </div>
+          <div>
+            <h3 className="font-semibold mb-4">Connect With Us</h3>
+            <div className='flex gap-3'>
+              <Facebook size={24} className="text-sm text-gray-600"/>
+              <Instagram size={24} className="text-sm text-gray-600" />
+              <Twitter size={24} className="text-sm text-gray-600"/>
+              <Linkedin size={24} className="text-sm text-gray-600" />
+            </div>
           </div>
         </div>
         <div className="mt-8 text-center text-sm text-gray-600">

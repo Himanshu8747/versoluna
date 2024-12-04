@@ -3,37 +3,62 @@
 import React from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Separator } from "@/components/ui/separator"
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-gray-100 py-12">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-12">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 xl:px-24">
         <h1 className="text-4xl font-bold text-center mb-8">About Versoluna</h1>
         
-        <Card className="mb-12">
-          <CardHeader>
-            <CardTitle>Our Story</CardTitle>
-            <CardDescription>Discover the journey of Versoluna</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="mb-4">
-              Versoluna was born out of a passion for bringing high-quality, innovative products to our customers. Founded in 2023, we&apos;ve quickly grown to become a leading online destination for tech enthusiasts and lifestyle shoppers alike.
-            </p>
-            <p className="mb-4">
-              Our mission is to curate a selection of products that enhance your daily life, from cutting-edge electronics to stylish accessories. We believe in the power of technology to improve our world, and we&apos;re committed to offering products that are not only functional but also environmentally conscious.
-            </p>
-            <p>
-              At Versoluna, we prioritize customer satisfaction above all else. Our team works tirelessly to ensure a seamless shopping experience, from browsing our carefully selected inventory to swift delivery right to your doorstep. We&apos;re not just selling products; we&apos;re building lasting relationships with our customers.
-            </p>
-          </CardContent>
-        </Card>
+        <Tabs defaultValue="story" className="mb-12">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="story">Our Story</TabsTrigger>
+            <TabsTrigger value="mission">Our Mission</TabsTrigger>
+          </TabsList>
+          <TabsContent value="story">
+            <Card>
+              <CardHeader>
+                <CardTitle>Our Story</CardTitle>
+                <CardDescription>Discover the journey of Versoluna</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4">
+                  Versoluna was born out of a passion for bringing high-quality, innovative products to our customers. Founded in 2023, we've quickly grown to become a leading online destination for tech enthusiasts and lifestyle shoppers alike.
+                </p>
+                <p>
+                  At Versoluna, we prioritize customer satisfaction above all else. Our team works tirelessly to ensure a seamless shopping experience, from browsing our carefully selected inventory to swift delivery right to your doorstep. We're not just selling products; we're building lasting relationships with our customers.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+          <TabsContent value="mission">
+            <Card>
+              <CardHeader>
+                <CardTitle>Our Mission</CardTitle>
+                <CardDescription>Enhancing lives through technology</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4">
+                  Our mission is to curate a selection of products that enhance your daily life, from cutting-edge electronics to stylish accessories. We believe in the power of technology to improve our world, and we're committed to offering products that are not only functional but also environmentally conscious.
+                </p>
+                <p>
+                  We strive to be at the forefront of technological advancements, always seeking out the most innovative and useful products for our customers. Our goal is to make these advancements accessible to everyone, bridging the gap between cutting-edge technology and everyday life.
+                </p>
+              </CardContent>
+            </Card>
+          </TabsContent>
+        </Tabs>
+
+        <Separator className="my-8" />
 
         <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>How do I place an order?</AccordionTrigger>
             <AccordionContent>
-              To place an order, simply browse our products, add items to your cart, and proceed to checkout. Follow the steps to enter your shipping and payment information, then confirm your order. You&apos;ll receive an order confirmation email once your purchase is complete.
+              To place an order, simply browse our products, add items to your cart, and proceed to checkout. Follow the steps to enter your shipping and payment information, then confirm your order. You'll receive an order confirmation email once your purchase is complete.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-2">
@@ -51,7 +76,7 @@ export default function AboutPage() {
           <AccordionItem value="item-4">
             <AccordionTrigger>What is your return policy?</AccordionTrigger>
             <AccordionContent>
-              We offer a 30-day return policy for most items. If you&apos;re not satisfied with your purchase, you can return it within 30 days of delivery for a full refund or exchange. Items must be in their original condition and packaging. Please note that some products may have specific return restrictions.
+              We offer a 30-day return policy for most items. If you're not satisfied with your purchase, you can return it within 30 days of delivery for a full refund or exchange. Items must be in their original condition and packaging. Please note that some products may have specific return restrictions.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-5">
@@ -63,7 +88,7 @@ export default function AboutPage() {
           <AccordionItem value="item-6">
             <AccordionTrigger>How can I track my order?</AccordionTrigger>
             <AccordionContent>
-              Once your order is shipped, you&apos;ll receive a shipping confirmation email with a tracking number. You can use this number to track your package on our website or the carrier&apos;s website. You can also check the status of your order by logging into your account on our website.
+              Once your order is shipped, you'll receive a shipping confirmation email with a tracking number. You can use this number to track your package on our website or the carrier's website. You can also check the status of your order by logging into your account on our website.
             </AccordionContent>
           </AccordionItem>
           <AccordionItem value="item-7">
@@ -75,7 +100,7 @@ export default function AboutPage() {
           <AccordionItem value="item-8">
             <AccordionTrigger>Do you offer warranty on your products?</AccordionTrigger>
             <AccordionContent>
-              Many of our products come with a manufacturer&apos;s warranty. The duration and terms of the warranty vary by product and brand. You can find specific warranty information on each product&apos;s page. Additionally, we offer an extended warranty option on select items for added peace of mind.
+              Many of our products come with a manufacturer's warranty. The duration and terms of the warranty vary by product and brand. You can find specific warranty information on each product's page. Additionally, we offer an extended warranty option on select items for added peace of mind.
             </AccordionContent>
           </AccordionItem>
         </Accordion>
@@ -83,3 +108,4 @@ export default function AboutPage() {
     </div>
   )
 }
+

@@ -91,7 +91,7 @@ export default function Home() {
       </div>
     </section>
     <Categories/>
-    <section className="mx-auto px-12 py-12">
+    <section className="mx-auto px-12 pb-24">
         <h3 className='text-4xl font-bold text-center mb-12'>Why Choose Versoluna ?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="feature-card bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">

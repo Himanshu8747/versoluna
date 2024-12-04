@@ -6,8 +6,7 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { categories} from '@/lib/commonData'
-
+import { categories } from '@/lib/commonData'
 
 export default function Categories() {
   return (
@@ -15,22 +14,28 @@ export default function Categories() {
       <div className="container mx-auto px-4">
         <h1 className="text-4xl font-bold text-center mb-12">Explore Our Collections</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mb-16">
-          {categories.map((category, index) => (
+          {categories.map((category) => (
             <motion.div
               key={category.slug}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.1 }}
+              transition={{ duration: 0.3, }}
+              whileHover={{ scale: 1.05 }}
             >
               <Card className="overflow-hidden">
-                <CardContent className="p-0">
-                  <Image
-                    src={category.image}
-                    alt={category.name}
-                    width={400}
-                    height={300}
-                    className="w-full h-48 object-cover"
-                  />
+                <CardContent className="p-0 relative overflow-hidden">
+                  <motion.div
+                    whileHover={{ scale: 1.05 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <Image
+                      src={category.image}
+                      alt={category.name}
+                      width={400}
+                      height={300}
+                      className="w-full h-48 object-cover"
+                    />
+                  </motion.div>
                 </CardContent>
                 <CardFooter className="flex justify-between items-center p-4">
                   <h2 className="text-xl font-semibold">{category.name}</h2>

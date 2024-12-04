@@ -1,6 +1,7 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
@@ -26,11 +27,21 @@ interface Product {
   category: string
 }
 
-const PRODUCTS_PER_PAGE = 12
+const PRODUCTS_PER_PAGE = 10
 
-export default function Page() {
+export default function CategoryPage() {
+  const params = useParams()
+  const category = params.category as string
   const [sortBy, setSortBy] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const [categoryProducts, setCategoryProducts] = useState<Product[]>([])
+
+  useEffect(() => {
+    const filteredProducts = fakedata.filter(product => 
+      product.category.toLowerCase() === category.toLowerCase()
+    )
+    setCategoryProducts(filteredProducts)
+  }, [category])
 
   const sortProducts = (products: Product[]) => {
     switch (sortBy) {
@@ -47,7 +58,7 @@ export default function Page() {
     }
   }
 
-  const sortedProducts = sortProducts(fakedata)
+  const sortedProducts = sortProducts(categoryProducts)
   const totalPages = Math.ceil(sortedProducts.length / PRODUCTS_PER_PAGE)
   const startIndex = (currentPage - 1) * PRODUCTS_PER_PAGE
   const endIndex = startIndex + PRODUCTS_PER_PAGE
@@ -55,7 +66,7 @@ export default function Page() {
 
   return (
     <div className="container mx-auto px-8 py-8">
-      <h1 className="text-3xl font-bold mb-6">Our Products</h1>
+      <h1 className="text-3xl font-bold mb-6 capitalize">{category}</h1>
       
       <div className="flex justify-between items-center mb-6">
         <p className="text-sm text-gray-600">
@@ -110,34 +121,36 @@ export default function Page() {
         ))}
       </div>
 
-      <div className="mt-12 flex justify-center">
-        <Pagination>
-          <PaginationContent>
-            <PaginationItem>
-              <PaginationPrevious 
-                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
-              />
-            </PaginationItem>
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <PaginationItem key={page}>
-                <PaginationLink
-                  isActive={currentPage === page}
-                  onClick={() => setCurrentPage(page)}
-                >
-                  {page}
-                </PaginationLink>
+      {totalPages > 1 && (
+        <div className="mt-8 flex justify-center">
+          <Pagination>
+            <PaginationContent>
+              <PaginationItem>
+                <PaginationPrevious 
+                  onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                  className={currentPage === 1 ? 'pointer-events-none opacity-50' : ''}
+                />
               </PaginationItem>
-            ))}
-            <PaginationItem>
-              <PaginationNext
-                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
-              />
-            </PaginationItem>
-          </PaginationContent>
-        </Pagination>
-      </div>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <PaginationItem key={page}>
+                  <PaginationLink
+                    isActive={currentPage === page}
+                    onClick={() => setCurrentPage(page)}
+                  >
+                    {page}
+                  </PaginationLink>
+                </PaginationItem>
+              ))}
+              <PaginationItem>
+                <PaginationNext
+                  onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                  className={currentPage === totalPages ? 'pointer-events-none opacity-50' : ''}
+                />
+              </PaginationItem>
+            </PaginationContent>
+          </Pagination>
+        </div>
+      )}
     </div>
   )
 }
